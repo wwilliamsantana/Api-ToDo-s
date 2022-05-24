@@ -2,7 +2,7 @@ import { TodosRepository } from "../../repositories/implementation/TodosReposito
 import { TodoController } from "./TodoController";
 import { TodoUseCase } from "./TodoUseCase";
 
-const todoRepository = new TodosRepository();
+const todoRepository = TodosRepository.getInstance();
 const todoUseCase = new TodoUseCase(todoRepository);
 const todoController = new TodoController(todoUseCase);
 

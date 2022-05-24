@@ -4,8 +4,19 @@ import { ITodosRepositoryDTO, ITodoRepository } from "../ITodosRepository";
 class TodosRepository implements ITodoRepository {
   private todos: Todos[];
 
-  constructor() {
+  // eslint-disable-next-line no-use-before-define
+  private static INSTANCE: TodosRepository;
+
+  private constructor() {
     this.todos = [];
+  }
+
+  public static getInstance(): TodosRepository {
+    if (!TodosRepository.INSTANCE) {
+      TodosRepository.INSTANCE = new TodosRepository();
+    }
+
+    return TodosRepository.INSTANCE;
   }
 
   create({ author, description }: ITodosRepositoryDTO) {
