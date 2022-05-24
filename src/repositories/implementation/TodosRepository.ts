@@ -1,7 +1,7 @@
 import { Todos } from "../../Model/Todos";
-import { ITodosRepositoryDTO } from "../ITodosRepository";
+import { ITodosRepositoryDTO, ITodoRepository } from "../ITodosRepository";
 
-class TodosRepository {
+class TodosRepository implements ITodoRepository {
   private todos: Todos[];
 
   constructor() {

@@ -1,6 +1,8 @@
 import { Router } from "express";
 
 import { TodosRepository } from "../repositories/implementation/TodosRepository";
+import { CreateTodosRepository } from "../services/CreateTodosRepository";
+import { ListTodos } from "../services/ListTodos";
 
 const todosRoutes = Router();
 
@@ -9,19 +11,17 @@ const todoRepository = new TodosRepository();
 todosRoutes.post("/", (request, response) => {
   const { author, description } = request.body;
 
-  const authorAlreadyExist = todoRepository.findByAuthor(author);
+  const createTodosRepository = new CreateTodosRepository(todoRepository);
 
-  if (authorAlreadyExist) {
-    throw new Error("Author already exists!");
-  }
-
-  todoRepository.create({ author, description });
+  createTodosRepository.execute({ author, description });
 
   return response.status(201).send();
 });
 
 todosRoutes.get("/", (request, response) => {
-  const all = todoRepository.list();
+  const listTodos = new ListTodos(todoRepository);
+
+  const all = listTodos.execute();
 
   return response.status(201).json(all);
 });

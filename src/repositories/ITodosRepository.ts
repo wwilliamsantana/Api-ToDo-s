@@ -8,7 +8,7 @@ interface ITodosRepositoryDTO {
 interface ITodoRepository {
   create({ author, description }: ITodosRepositoryDTO);
   list(): Todos[];
-  findByAuthor(author: string);
+  findByAuthor(author: string): Todos;
 }
 
 export { ITodoRepository, ITodosRepositoryDTO };
