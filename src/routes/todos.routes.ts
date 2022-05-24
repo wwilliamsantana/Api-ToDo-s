@@ -1,29 +1,16 @@
 import { Router } from "express";
 
-import { TodosRepository } from "../repositories/implementation/TodosRepository";
-import { CreateTodosRepository } from "../services/CreateTodosRepository";
-import { ListTodos } from "../services/ListTodos";
+import { todoController } from "../useCase/createTodos";
+import { listTodosController } from "../useCase/listTodos";
 
 const todosRoutes = Router();
 
-const todoRepository = new TodosRepository();
-
 todosRoutes.post("/", (request, response) => {
-  const { author, description } = request.body;
-
-  const createTodosRepository = new CreateTodosRepository(todoRepository);
-
-  createTodosRepository.execute({ author, description });
-
-  return response.status(201).send();
+  return todoController.handle(request, response);
 });
 
 todosRoutes.get("/", (request, response) => {
-  const listTodos = new ListTodos(todoRepository);
-
-  const all = listTodos.execute();
-
-  return response.status(201).json(all);
+  return listTodosController.handle(request, response);
 });
 
 export { todosRoutes };
