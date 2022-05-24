@@ -1,6 +1,8 @@
 import { Router } from "express";
 import multer from "multer";
 
+import { importTodoController } from "../useCase/uploadArquivo";
+
 const upload = multer({
   dest: "./tmp",
 });
@@ -8,11 +10,7 @@ const upload = multer({
 const uploadRouter = Router();
 
 uploadRouter.post("/", upload.single("file"), (request, response) => {
-  const { file } = request;
-
-  console.log(file);
-
-  return response.send();
+  return importTodoController.handle(request, response);
 });
 
 export { uploadRouter };
