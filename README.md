@@ -15,6 +15,7 @@
 * Aplicar conceitos do SOLID (Separar arquivos de acordos com sua funções isoladas) ✔️
 * Fazer a refatoração para uso do Docker (Rodar node + banco de dados)
 * Utilizar Migrations (TypeORM) para lidar com banco de dados
+* Injeção de dependências (TSyringe)
 * Fazer um sistema de Login + senha (Incluindo senhas criptografadas(utilizando o brcrypt))
 * Autenticação de rota (Verificando se o usuário está logado) 
 
