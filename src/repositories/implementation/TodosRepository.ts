@@ -40,6 +40,18 @@ class TodosRepository implements ITodoRepository {
 
     return authorExist;
   }
+
+  findById(id: string): Todos {
+    const idExist = this.todos.find((element) => element.id === id);
+
+    return idExist;
+  }
+
+  delete(id: string): void {
+    const element = this.todos.findIndex((value) => value.id === id);
+
+    this.todos.splice(element, 1);
+  }
 }
 
 export { TodosRepository };
