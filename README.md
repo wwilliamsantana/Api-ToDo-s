@@ -3,6 +3,12 @@
 
 ###    Objetivos 🖊️
 
+#### Techs 🚀
+
+* Nodejs
+* TypeScript
+
+
 ##### Back-end
 
 * Fazer o CRUD com array estática (Contendo Create, Readme's, Update e Delete)  ✔️
