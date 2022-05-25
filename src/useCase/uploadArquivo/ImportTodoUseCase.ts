@@ -8,6 +8,12 @@ interface IImportTodo {
   description: string;
 }
 
+// Essa função, ler o arquivo enviado no insomnia, fazendo a destruturação dos elementos.
+// Após pergamos os elementos, fazemos o create com as informações.
+// Podemos fazer diversas aplicações pegando os elementos de arquivos externos.
+// -------------------------------------------------
+// Vou tirar essa função da nossa aplicação, mas deixarei registrado no git!
+
 class ImportTodoUseCase {
   constructor(private todoRepository: TodosRepository) { }
 
