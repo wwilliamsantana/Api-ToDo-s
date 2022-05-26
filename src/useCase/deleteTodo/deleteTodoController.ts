@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { DeleteTodoUseCase } from "./deleteTodoUseCase";
+import { DeleteTodoUseCase } from "./DeleteTodoUseCase";
 
 class DeleteTodoController {
   constructor(private deleteTodoUseCase: DeleteTodoUseCase) { }

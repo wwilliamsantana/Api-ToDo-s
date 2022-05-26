@@ -18,6 +18,7 @@ class UpdateTodoUseCase {
 
     idExist.author = author || idExist.author;
     idExist.description = description || idExist.description;
+    idExist.update_at = new Date();
 
     return idExist;
   }

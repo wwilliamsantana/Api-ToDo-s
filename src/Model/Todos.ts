@@ -5,6 +5,7 @@ class Todos {
   author: string;
   description: string;
   created_at: Date;
+  update_at?: Date;
 
   constructor() {
     if (!this.id) {
