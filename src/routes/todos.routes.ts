@@ -12,6 +12,7 @@ todosRoutes.post("/", (request, response) => {
 });
 
 todosRoutes.get("/", (request, response) => {
+  console.log("Hello Word");
   return listTodosController.handle(request, response);
 });
 
