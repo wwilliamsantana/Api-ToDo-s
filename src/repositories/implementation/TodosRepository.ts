@@ -1,6 +1,6 @@
 import { getRepository, Repository } from "typeorm";
 
-import { Todos } from "../../Model/Todos";
+import { Todos } from "../../entities/Todos";
 import { ITodosRepositoryDTO, ITodoRepository } from "../ITodosRepository";
 
 class TodosRepository implements ITodoRepository {
@@ -37,9 +37,9 @@ class TodosRepository implements ITodoRepository {
     return idExist;
   }
 
-  async delete(id: string): Promise<void> {
-    const element = await this.repository.delete(id);
-  }
+  // async delete(id: string): Promise<void> {
+  //   const element = await this.repository.delete(id);
+  // }
 }
 
 export { TodosRepository };

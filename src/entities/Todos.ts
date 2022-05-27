@@ -1,13 +1,7 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("Todos")
+@Entity("todos")
 class Todos {
   @PrimaryColumn()
   id?: string;
@@ -17,8 +11,6 @@ class Todos {
   description: string;
   @CreateDateColumn()
   created_at: Date;
-  @UpdateDateColumn()
-  update_at?: Date;
 
   constructor() {
     if (!this.id) {

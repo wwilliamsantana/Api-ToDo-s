@@ -1,4 +1,4 @@
-import { Todos } from "../../Model/Todos";
+import { Todos } from "../../entities/Todos";
 import { TodosRepository } from "../../repositories/implementation/TodosRepository";
 
 class ListTodosUseCase {

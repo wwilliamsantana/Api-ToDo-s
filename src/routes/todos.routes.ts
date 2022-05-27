@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import todoController from "../useCase/createTodo/index";
+import todoController from "../useCase/createTodo";
 import { deleteTodoController } from "../useCase/deleteTodo";
 import { listTodosController } from "../useCase/listTodos";
 import { updateTodoController } from "../useCase/updateTodo";

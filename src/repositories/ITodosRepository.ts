@@ -1,4 +1,4 @@
-import { Todos } from "../Model/Todos";
+import { Todos } from "../entities/Todos";
 
 interface ITodosRepositoryDTO {
   author: string;
@@ -10,7 +10,7 @@ interface ITodoRepository {
   list(): Promise<Todos[]>;
   findByAuthor(author: string): Promise<Todos>;
   findById(id: string): Promise<Todos>;
-  delete(id: string): Promise<void>;
+  // delete(id: string): Promise<void>;
 }
 
 export { ITodoRepository, ITodosRepositoryDTO };
