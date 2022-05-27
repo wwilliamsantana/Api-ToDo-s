@@ -6,11 +6,11 @@ interface ITodosRepositoryDTO {
 }
 
 interface ITodoRepository {
-  create({ author, description }: ITodosRepositoryDTO);
-  list(): Todos[];
-  findByAuthor(author: string): Todos;
-  findById(id: string): Todos;
-  delete(id: string): void;
+  create({ author, description }: ITodosRepositoryDTO): Promise<void>;
+  list(): Promise<Todos[]>;
+  findByAuthor(author: string): Promise<Todos>;
+  findById(id: string): Promise<Todos>;
+  delete(id: string): Promise<void>;
 }
 
 export { ITodoRepository, ITodosRepositoryDTO };

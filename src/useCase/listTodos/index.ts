@@ -2,7 +2,7 @@ import { TodosRepository } from "../../repositories/implementation/TodosReposito
 import { ListTodosController } from "./ListTodosController";
 import { ListTodosUseCase } from "./ListTodosUseCase";
 
-const todoRepository = TodosRepository.getInstance();
+const todoRepository = null;
 const listTodosUseCase = new ListTodosUseCase(todoRepository);
 const listTodosController = new ListTodosController(listTodosUseCase);
 

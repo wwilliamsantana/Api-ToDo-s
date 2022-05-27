@@ -8,8 +8,8 @@ interface IRequest {
 class TodoUseCase {
   constructor(private todoRepository: TodosRepository) { }
 
-  execute({ author, description }: IRequest): void {
-    const authorAlreadyExist = this.todoRepository.findByAuthor(author);
+  async execute({ author, description }: IRequest): Promise<void> {
+    const authorAlreadyExist = await this.todoRepository.findByAuthor(author);
 
     if (authorAlreadyExist) {
       throw new Error("Author Already Exists");

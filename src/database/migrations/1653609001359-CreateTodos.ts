@@ -4,7 +4,7 @@ export class CreateTodos1653609001359 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "todos",
+        name: "Todos",
         columns: [
           {
             name: "id",

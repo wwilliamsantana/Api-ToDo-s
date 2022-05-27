@@ -2,7 +2,7 @@ import { TodosRepository } from "../../repositories/implementation/TodosReposito
 import { DeleteTodoController } from "./DeleteTodoController";
 import { DeleteTodoUseCase } from "./DeleteTodoUseCase";
 
-const todoRepository = TodosRepository.getInstance();
+const todoRepository = null;
 const deleteTodoUseCase = new DeleteTodoUseCase(todoRepository);
 const deleteTodoController = new DeleteTodoController(deleteTodoUseCase);
 

@@ -5,10 +5,10 @@ import { TodoUseCase } from "./TodoUseCase";
 class TodoController {
   constructor(private todoUseCase: TodoUseCase) { }
 
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { author, description } = request.body;
 
-    this.todoUseCase.execute({ author, description });
+    await this.todoUseCase.execute({ author, description });
 
     return response.status(201).send();
   }
