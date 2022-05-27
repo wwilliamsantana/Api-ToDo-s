@@ -4,5 +4,11 @@
   "host": "localhost",
   "username": "apitodos",
   "password": "todos",
-  "database": "apitodos"
+  "database": "apitodos",
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
 }
