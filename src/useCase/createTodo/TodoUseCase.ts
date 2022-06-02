@@ -1,3 +1,5 @@
+import { inject, injectable } from "tsyringe";
+
 import { TodosRepository } from "../../repositories/implementation/TodosRepository";
 
 interface IRequest {
@@ -5,8 +7,11 @@ interface IRequest {
   description: string;
 }
 
+@injectable()
 class TodoUseCase {
-  constructor(private todoRepository: TodosRepository) { }
+  constructor(
+    @inject("todoRepository") private todoRepository: TodosRepository
+  ) { }
 
   async execute({ author, description }: IRequest): Promise<void> {
     const authorAlreadyExist = await this.todoRepository.findByAuthor(author);

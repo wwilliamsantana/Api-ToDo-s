@@ -1,16 +1,22 @@
+import { inject, injectable } from "tsyringe";
+
+import { Todos } from "../../entities/Todos";
 import { TodosRepository } from "../../repositories/implementation/TodosRepository";
 
+@injectable()
 class DeleteTodoUseCase {
-  constructor(private todoRepository: TodosRepository) { }
+  constructor(
+    @inject("todoRepository") private todoRepository: TodosRepository
+  ) { }
 
-  execute(id: string) {
-    const element = this.todoRepository.findById(id);
+  async execute(id: string): Promise<void> {
+    const idAlreadyExist = await this.todoRepository.findById(id);
 
-    if (!element) {
+    if (!idAlreadyExist) {
       throw new Error("Id not found");
     }
 
-    this.todoRepository.delete(element.id);
+    await this.todoRepository.delete(idAlreadyExist);
   }
 }
 

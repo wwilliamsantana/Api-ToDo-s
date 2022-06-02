@@ -3,6 +3,7 @@ import express from "express";
 
 import "./database";
 import { router } from "./routes";
+import "./shared/container";
 
 const app = express();
 

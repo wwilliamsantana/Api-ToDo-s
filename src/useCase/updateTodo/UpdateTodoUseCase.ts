@@ -1,3 +1,6 @@
+import { inject, injectable } from "tsyringe";
+
+import { Todos } from "../../entities/Todos";
 import { TodosRepository } from "../../repositories/implementation/TodosRepository";
 
 interface IRequest {
@@ -6,21 +9,26 @@ interface IRequest {
   description?: string;
 }
 
+@injectable()
 class UpdateTodoUseCase {
-  constructor(private todoRepository: TodosRepository) { }
+  constructor(
+    @inject("todoRepository") private todoRepository: TodosRepository
+  ) { }
 
-  execute({ id, author, description }: IRequest) {
-    const idExist = this.todoRepository.findById(id);
+  async execute({ id, author, description }: IRequest): Promise<Todos> {
+    const idExist = await this.todoRepository.findById(id);
 
     if (!idExist) {
       throw new Error("Id not found!");
     }
 
-    idExist.author = author || idExist.author;
-    idExist.description = description || idExist.description;
-    idExist.update_at = new Date();
+    const updateId = await this.todoRepository.update({
+      id,
+      author,
+      description,
+    });
 
-    return idExist;
+    return updateId;
   }
 }
 

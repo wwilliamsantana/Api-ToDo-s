@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 
 import { DeleteTodoUseCase } from "./DeleteTodoUseCase";
 
 class DeleteTodoController {
-  constructor(private deleteTodoUseCase: DeleteTodoUseCase) { }
-
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    this.deleteTodoUseCase.execute(id);
+    const deleteTodoUseCase = container.resolve(DeleteTodoUseCase);
+
+    await deleteTodoUseCase.execute(id);
 
     return response.status(201).send();
   }

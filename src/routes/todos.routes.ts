@@ -1,26 +1,23 @@
 import { Router } from "express";
 
-import todoController from "../useCase/createTodo";
-import { deleteTodoController } from "../useCase/deleteTodo";
-import { listTodosController } from "../useCase/listTodos";
-import { updateTodoController } from "../useCase/updateTodo";
+import { TodoController } from "../useCase/createTodo/TodoController";
+import { DeleteTodoController } from "../useCase/deleteTodo/DeleteTodoController";
+import { ListTodosController } from "../useCase/listTodos/ListTodosController";
+import { UpdateTodoController } from "../useCase/updateTodo/UpdateTodoController";
 
 const todosRoutes = Router();
 
-todosRoutes.post("/", (request, response) => {
-  return todoController().handle(request, response);
-});
+const todoCreateController = new TodoController();
+const listTodoController = new ListTodosController();
+const updateTodoController = new UpdateTodoController();
+const deleteTodoController = new DeleteTodoController();
 
-todosRoutes.get("/", (request, response) => {
-  return listTodosController.handle(request, response);
-});
+todosRoutes.post("/", todoCreateController.handle);
 
-todosRoutes.post("/update/:id", (request, response) => {
-  return updateTodoController.handle(request, response);
-});
+todosRoutes.get("/", listTodoController.handle);
 
-todosRoutes.delete("/delete/:id", (request, response) => {
-  return deleteTodoController.handle(request, response);
-});
+todosRoutes.post("/update/:id", updateTodoController.handle);
+
+todosRoutes.delete("/delete/:id", deleteTodoController.handle);
 
 export { todosRoutes };

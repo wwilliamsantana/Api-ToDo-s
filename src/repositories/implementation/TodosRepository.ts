@@ -19,10 +19,29 @@ class TodosRepository implements ITodoRepository {
     await this.repository.save(todos);
   }
 
+  async update({
+    id,
+    author,
+    description,
+  }: ITodosRepositoryDTO): Promise<Todos> {
+    const idTodo = await this.repository.findOne(id);
+
+    idTodo.author = author || idTodo.author;
+    idTodo.description = description || idTodo.description;
+
+    await this.repository.save(idTodo);
+
+    return idTodo;
+  }
+
   async list(): Promise<Todos[]> {
     const all = await this.repository.find();
 
     return all;
+  }
+
+  async delete(data: Todos): Promise<void> {
+    await this.repository.delete(data.id);
   }
 
   async findByAuthor(author: string): Promise<Todos> {
@@ -36,10 +55,6 @@ class TodosRepository implements ITodoRepository {
 
     return idExist;
   }
-
-  // async delete(id: string): Promise<void> {
-  //   const element = await this.repository.delete(id);
-  // }
 }
 
 export { TodosRepository };
